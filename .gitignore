@@ -1,0 +1,55 @@
+# ===== BREBIN TECH .gitignore =====
+
+# Arquivos do sistema
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Arquivos temporários
+*.tmp
+*.temp
+*.log
+*.cache
+
+# Configurações do editor
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# Arquivos de backup
+*.bak
+*.backup
+*~
+
+# Pasta node_modules (caso use no futuro)
+node_modules/
+npm-debug.log*
+
+# Arquivos de ambiente (segurança)
+.env
+.env.local
+.env.production
+config.json
+
+# Arquivos pessoais/sensíveis
+passwords.txt
+credentials.txt
+private/
+secrets/
+
+# Arquivos grandes desnecessários
+*.zip
+*.rar
+*.7z
+*.tar.gz
+
+# Rascunhos e testes
+test/
+temp/
+draft/
+.playground/
