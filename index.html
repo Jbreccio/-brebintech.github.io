@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BREBIN TECH - Inovação & Early Adopters 🚀</title>
+  <link rel="stylesheet" href="static/css/style.css" />
+</head>
+<body>
+  <!-- MENU LATERAL -->
+  <div class="menu-toggle-container">
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <span class="menu-label">Menu</span>
+  </div>
+  
+  <div class="overlay" onclick="closeMenu()"></div>
+  
+  <nav class="sidebar">
+    <button class="close-btn" onclick="closeMenu()">×</button>
+    <div class="sidebar-header">
+      <div class="sidebar-logo">B</div>
+      <div class="sidebar-title">BREBIN TECH</div>
+      <div class="sidebar-subtitle">Innovation Hub</div>
+    </div>
+    <div class="menu-items">
+      <a href="#home" class="menu-item active">
+        <span class="menu-icon">🏠</span>Home
+      </a>
+      <a href="#projetos" class="menu-item">
+        <span class="menu-icon">🚀</span>Projetos
+      </a>
+      <a href="#early-adopters" class="menu-item">
+        <span class="menu-icon">⚡</span>Early Adopters
+      </a>
+      <a href="#tecnologias" class="menu-item">
+        <span class="menu-icon">💻</span>Tecnologias
+      </a>
+      <a href="#sobre" class="menu-item">
+        <span class="menu-icon">ℹ️</span>Sobre
+      </a>
+      <a href="#contato" class="menu-item">
+        <span class="menu-icon">📞</span>Contato
+      </a>
+      <a href="#blog" class="menu-item">
+        <span class="menu-icon">📝</span>Blog Tech
+      </a>
+    </div>
+  </nav>
+
+  <!-- ELEMENTOS FLUTUANTES -->
+  <div class="tech-elements">
+    <div class="tech-symbol">#</div>
+    <div class="tech-symbol">%</div>
+    <div class="tech-symbol">@</div>
+    <div class="tech-symbol">🧑🏻‍💻</div>
+    <div class="tech-symbol">{ }</div>
+    <div class="tech-symbol">[ ]</div>
+    <div class="tech-symbol">&&</div>
+    <div class="tech-symbol">||</div>
+  </div>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main>
+    <header>
+      <img src="static/img/logo.png" alt="Logo BREBIN TECH" width="200" />
+      <h1>Bem-vindo à BREBIN TECH 🚀</h1>
+      <p>Sua startup de inovação e early adopters</p>
+    </header>
+  </main>
+
+  <script>
+    // ===== MENU LATERAL FUNCTIONS =====
+    function toggleMenu() {
+      const sidebar = document.querySelector('.sidebar');
+      const overlay = document.querySelector('.overlay');
+      
+      sidebar.classList.toggle('active');
+      overlay.classList.toggle('active');
+    }
+
+    function closeMenu() {
+      const sidebar = document.querySelector('.sidebar');
+      const overlay = document.querySelector('.overlay');
+      
+      sidebar.classList.remove('active');
+      overlay.classList.remove('active');
+    }
+
+    // ===== PARTÍCULAS TECH FLUTUANTES =====
+    function createTechParticle() {
+      const symbols = ['#', '%', '@', '🧑🏻‍💻', '{ }', '[ ]', '&&', '||', '++', '--', '===', '!=', 'function()', 'const', 'let', '=>'];
+      const particle = document.createElement('div');
+      particle.style.position = 'fixed';
+      particle.style.color = `rgba(${Math.random() > 0.5 ? '0, 212, 255' : '255, 0, 153'}, 0.4)`;
+      particle.style.fontSize = Math.random() * 20 + 16 + 'px';
+      particle.style.fontFamily = 'Courier New, monospace';
+      particle.style.fontWeight = 'bold';
+      particle.style.pointerEvents = 'none';
+      particle.style.zIndex = '1';
+      particle.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.top = '100vh';
+      
+      document.body.appendChild(particle);
+      
+      let position = 100;
+      let rotation = 0;
+      const animation = setInterval(() => {
+        position -= 0.8;
+        rotation += 4;
+        particle.style.top = position + 'vh';
+        particle.style.transform = `rotate(${rotation}deg)`;
+        particle.style.opacity = (position / 100) * 0.6;
+        
+        if (position < -10) {
+          clearInterval(animation);
+          document.body.removeChild(particle);
+        }
+      }, 50);
+    }
+
+    // ===== EFEITO MATRIX =====
+    function createMatrixEffect() {
+      const codes = ['010101', '110011', 'function()', 'if(true)', 'return;', 'console.log', 'async/await', '{ code }', 'npm install', 'git commit', 'docker run'];
+      const matrix = document.createElement('div');
+      matrix.style.position = 'fixed';
+      matrix.style.color = 'rgba(0, 212, 255, 0.1)';
+      matrix.style.fontSize = '12px';
+      matrix.style.fontFamily = 'Courier New, monospace';
+      matrix.style.pointerEvents = 'none';
+      matrix.style.zIndex = '0';
+      matrix.innerHTML = codes[Math.floor(Math.random() * codes.length)];
+      matrix.style.left = Math.random() * 100 + '%';
+      matrix.style.top = '-20px';
+      
+      document.body.appendChild(matrix);
+      
+      let position = -20;
+      const animation = setInterval(() => {
+        position += 2;
+        matrix.style.top = position + 'px';
+        matrix.style.opacity = Math.random() * 0.3;
+        
+        if (position > window.innerHeight + 20) {
+          clearInterval(animation);
+          document.body.removeChild(matrix);
+        }
+      }, 100);
+    }
+
+    // ===== INICIALIZAR EFEITOS =====
+    setInterval(createTechParticle, 1500);
+    setInterval(createMatrixEffect, 3000);
+
+    // Fechar menu com ESC
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeMenu();
+      }
+    });
+
+    // Efeito hover na logo
+    document.querySelector('header img').addEventListener('mouseenter', function() {
+      this.style.transform = 'scale(1.1) rotate(5deg)';
+    });
+
+    document.querySelector('header img').addEventListener('mouseleave', function() {
+      this.style.transform = 'scale(1) rotate(0deg)';
+    });
+  </script>
+</body>
+</html>
